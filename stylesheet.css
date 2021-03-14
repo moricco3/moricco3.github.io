@@ -1,0 +1,608 @@
+/* reset.css */
+
+/**
+ * YUI 3.5.0 - reset.css (http://developer.yahoo.com/yui/3/cssreset/)
+ * http://cssreset.com
+ * Copyright 2012 Yahoo! Inc. All rights reserved.
+ * http://yuilibrary.com/license/
+ */
+/*
+	TODO will need to remove settings on HTML since we can't namespace it.
+	TODO with the prefix, should I group by selector or property for weight savings?
+*/
+html {
+  color: #000;
+  background: #fff;
+}
+/*
+	TODO remove settings on BODY since we can't namespace it.
+*/
+/*
+	TODO test putting a class on HEAD.
+		- Fails on FF.
+*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,
+img {
+	border:0;
+}
+/*
+	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
+*/
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style:normal;
+	font-weight:normal;
+}
+
+ol,
+ul {
+	list-style:none;
+}
+
+caption,
+th {
+	text-align:left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,
+q:after {
+	content:'';
+}
+abbr,
+acronym {
+	border:0;
+	font-variant:normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input,
+textarea,
+select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+/* 一般的に継承するプロパティは状況で変わります。先ほどの例で、親要素のpadding値は子要素に継承させずに、文字の色やフォントの種類は子要素でも同じにする場合を考えます。
+
+継承されないプロパティを、親要素から継承するには、子要素にinheritプロパティを指定します。 */
+
+
+/*to enable resizing for IE*/
+input,
+textarea,
+select {
+	*font-size:100%;
+}
+/*because legend doesn't inherit in IE */
+legend {
+	color:#000;
+}
+/* <LEGEND>は、<FIELDSET>タグでグループ化されたフォームの入力項目にタイトルを付けるタグです。 <FIELDSET>～<FIELDSET>内の先頭に1つだけ記述します。 */
+/* YUI CSS Detection Stamp */
+#yui3-css-stamp.cssreset { display: none; }
+
+/* style.css --------------------------------------------------------*/
+
+/* ------------------ */
+/* base */
+/* ------------------ */
+
+html{
+  font-size: 62.5%;
+}
+body{
+  color: #141414;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  font-family: 'roboto', sans-serif,'Noto Sans JP', sans-serif;
+}
+
+.noscroll{
+  overflow: hidden;
+}
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+.section-title{
+  font-size: 3.6rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 70px;
+}
+h3{
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2;
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+}
+.section-wrapper{
+  padding: 100px 10% 50px;
+  /* 上（左右）下 */
+}
+/* ------------------ */
+/* header */
+/* ------------------ */
+/* header作成のポイント
+・headerの型を覚える
+・flexboxを理解する
+
+headerの型を知ろう！
+　今回のような左側にロゴやサイト名があり、右側にナビゲーションメニューがあるheaderのデザインは、頻出のレイアウトになります。
+　そのため、コーディング初学者の方は下記のhtmlの構造を頭にいれておくことをオススメします。
+flexboxを使って横並びをさせよう！
+　flexboxをまだよく知らない人は、こちらの記事でflexboxを学んでいきましょう！
+　headerを作成していくときには、2度の横並びが必要となります。
+
+①ナビゲーションメニューの横並び
+②ロゴとナビゲーションメニューの横並び
+
+　しっかりとflexboxを学習して、この2度の横並びを行うことで今回のようなレイアウトを組むことができます！
+cssも型をしっかりと理解してくださいね♪
+/* reset.cssに記述 */
+/*li{
+  list-style:none;
+}
+/* baseに記述 */
+/*a{
+  text-decoration: none;
+  color:#fff;
+} */
+
+.header{
+	background-color: #1B1310;
+	color: #fff;
+	height:74px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 120px;
+	border-bottom:1px solid #fff;
+}
+.nav-list{
+	/* navの横並び */
+	display: flex;
+}
+.nav-item{
+	/* メニューの右側に余白 */
+	margin-right: 55px;
+}
+.burger-btn{
+	display: none;
+}
+/* ------------------ */
+/* fv */
+/* fv作成のポイント
+・背景画像の設定の方法を理解する
+・上下左右中央寄せの方法を理解する
+
+背景画像の設定の方法を理解する
+　background-imageの設定方法をまだよく知らない人は、こちらの記事でbackground-imageの設定方法を学んでいきましょう！
+
+上下左右中央寄せの方法を理解する
+　中央に配置されている、メインコピーの配置をflexboxやpositionを使用して作成していきます。
+
+上下中央寄せの代表的な方法
+
+①flexboxを使用した上下左右中央寄せの方法
+②positionを使用した上下中央寄せの方法
+
+①flexboxを使用した上下左右中央寄せの方法
+
+上下左右中央寄せさせたい要素の親要素に対して
+
+親要素{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+このたった4行加えるだけで、上下左右中央寄せが完成します。
+②positionを使用した上下中央寄せの方法
+
+今回のコーディングでは、flexboxで実装しましたが、positionを使用しても簡単に実装することができます。 */
+/* ------------------ */
+.fv{
+  height: 90vh;
+  background-image: url(https://drive.google.com/uc?export=view&id=1KiBAmJAbba1BglsHGnlKWEKzj6wCL9kq);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.main-copy{
+  font-size: 5rem;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #fff;
+  padding: 34px 42px;
+}
+
+/* ------------------ */
+/* about
+About作成のポイント
+①<br>を用いて改行の位置を指定する。
+②両サイドの余白は、wrapperへのpaddingで指定する。
+
+①<br>を用いて改行の位置を指定する。
+
+　常に改行された状態にするために、<br>で改行を指定しておくようにしましょう！
+②両サイドの余白は、wrapperへのpaddingで指定する。
+
+　左右の余白は、%やvwで指定をしておくとレスポンシブに対応しやすくなるのでオススメです！
+/* base */
+/*.section-wrapper{
+  padding:100px 15% 50px;
+}
+*/
+/* ------------------ */
+
+/* ------------------ */
+/* service
+Service作成のポイント
+①画像の幅指定の方法を知っている
+②flexboxの使い方を知っている
+③flexboxでrow-reverceを使用して順番を変える方法を知っている
+
+①画像の幅指定の方法を知っている
+
+画像は、ブロック要素で囲み囲んだ要素に幅を指定するようにしましょう！
+詳しくはこちらの記事で解説しているので参考にしてみてください！
+
+②flexboxの使い方を知っている
+
+flexboxは、横並びにさせたい要素の親要素にdisplay:flex;を記述することで横並びにできる方法です。
+
+flexboxをまだよく知らない人は、こちらの記事でflexboxを学んでいきましょう！
+
+③flexboxでrow-reverceを使用して順番を変える方法を知っている
+
+display:flex;を使用して横並びにさせた後に、続けてflex-direction: row-reverse;と記述すると横並びになった要素の順番が入れ替わります。
+
+*/
+/* ------------------ */
+.text-wrapper_service,.img-wrapper_service{
+  max-width: 480px;
+}
+.content-inner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.reverse{
+  margin-top: 50px;
+  flex-direction: row-reverse;
+}
+/* ------------------ */
+/* news
+News作成のポイント
+①画像の幅指定の方法を知っている
+②flexboxの使い方を知っている
+③注意点
+
+①や②は、他のセクションで解説をしているので参考にしてみてください！
+
+③注意点
+
+画像の下に小さな余白ができてしまっている場合、imgにvertical-align: bottom;を追加して余白を取り除いてください！！！
+今回は、テキストの量が同じだったので上記のようなコーディングをしました。しかし、テキストの量が異なる場合でも、同じ高さにする場合はbox-sizing:border-box;というプロパティを使用します。
+
+中級編で紹介できればと思いますので、楽しみにしていてください♪
+*/
+/* ------------------ */
+.card-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-item{
+  max-width: 320px;
+  box-shadow: 0 0 6px rgba(27,19,16,0.4);
+  margin-right: 10px;
+}
+.text_news{
+  color: #141414;
+  padding: 33px 25px;
+}
+/* ------------------ */
+/* contact
+contact作成のポイント
+①formの型を覚えること
+②inputタグの使い方を学ぶこと
+
+①formの型を覚える
+
+formもheaderと同様で型が存在します。今回のレイアウトのようなformは、よく使用するので覚えちゃうくらいが良いかと思います！
+②inputタグの使い方を学ぶ
+
+　inputタグとは、何かを入力・送信するときに使うタグになります。そしてinputタグの使い方を学ぶ上で一番抑える必要があるのがtype属性と呼ばれるものです。
+
+　type属性をcheckbox・radio・text・submitなどと変更することで、表示のさせ方を簡単に変更することができます。
+
+
+*/
+/* ------------------ */
+.form{
+  min-width: 700px;
+  margin: 0 auto;
+}
+input, textarea{
+  border: 1px solid #141414;
+  padding: 10px;
+}
+
+.form-part{
+	display: flex;
+	flex-direction: column;
+	margin-top: 25px;
+}
+label{
+	margin-bottom: 5px;
+}
+#input-subject,textarea{
+	line-height: 2;
+	font-size: 1.6rem;
+}
+textarea{
+	resize: none;
+	height: 171px;
+}
+.form-send{
+	text-align: center;
+	margin-top: 50px;
+}
+.form-btn{
+	display: inline-block;
+	width: 235px;
+	padding: 20px 97px;
+	border-radius: 30px;
+	font-size: 2rem;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	background-color: #1B1310;
+	box-shadow: 0px 0px 6px #1B1310;
+}
+
+/* ------------------ */
+/* footer */
+/* ------------------ */
+footer{
+	background-color: #1B1310;
+	height: 80px;
+}
+small{
+	display: block;
+	text-align: center;
+	color: #fff;
+	padding-top: 30px;
+}
+/* --------------------------------------------------------------------------------- */
+@media screen and (max-width:768px){
+/* ----------------------- */
+/* base_sp
+レスポンシブコーディングのポイント
+①手順を理解する
+②レスポンシブのポイントを抑える
+
+①手順を理解する
+
+レスポンシブコーディングをする時の手順は下記のように進めるとスムーズにできます。
+
+a.メディアクエリをPC用のCSSの一番下に記述する
+@media screen and (max-width: 768px) {
+//ここに適用したいCSSを書く
+}
+
+b.基本的にheaderから順に記述していく（ハンバーガーメニューは最後に実装する）
+※上の要素から順番に375px(例)に入れていく
+
+c.wrapperのpaddingを調整する
+
+　スマートフォンでは、左右の余白が15pxくらいが良いと言われています。
+　早い段階で、左右のpaddingを調節することで、見た目を整えやすくなります。
+
+d.font-sizeの調整をする
+
+e.widthの調整をする
+※width指定はせずに、PCの時からmax-widthを指定するとレスポンシブが楽にできます。
+
+f.横並びの要素を縦に並べる
+※flex-direction:column;
+
+PCで横並びの要素を縦に並べたい時は、縦に並べたい要素の親要素にflex-direction:column;を記述することで縦に並べることができます。
+
+その後は、margin:auto;などを使用してセンタリングしてあげると縦並びの完了です！
+
+g.画像のトリミングを行う
+※object-fit;
+
+　PCとSPで画像のサイズが異なっている場合は、object-fit;というプロパティを指定することで、簡単にトリミングを行うことができます。
+　object-fit;については、こちらの記事(CSSで画像をトリミングできるobject-fitの使い方を徹底解説！)で詳しく説明しているので参考にしてみてください。
+
+h.全て完了後ハンバーガーメニューを実装する
+※全ての要素が375px(例)の幅に収まってから実装するのがスムーズです。
+
+
+/* ----------------------- */
+
+h3{
+	font-size: 2rem;
+	margin-bottom: 30px;
+}
+.section-wrapper{
+	padding:100px 5% 50px;
+}
+/* ------------------ */
+/* humberger-menu */
+/* ------------------ */
+.header{
+	padding: 0 5%;
+}
+.burger-btn{
+	display: block;
+	width: 39px;
+	height: 39px;
+	position: relative;
+	z-index: 3;
+/*   codepenの挙動のため */
+  background-color:transparent;
+  border:none;
+  }
+  .bar{
+	width: 20px;
+	height: 1px;
+	display: block;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #fff;
+  }
+  .bar_top{
+	top: 10px;
+  }
+  .bar_mid{
+	top: 50%;
+	transform: translate(-50%,-50%);
+  }
+  .bar_bottom{
+	bottom: 10px;
+  }
+  .burger-btn.close .bar_top{
+	transform: translate(-50%,10px) rotate(45deg);
+	transition: transform .3s;
+  }
+  .burger-btn.close .bar_mid{
+	opacity: 0;
+	transition: opacity .3s;
+  }
+  .burger-btn.close .bar_bottom{
+	transform: translate(-50%,-8px) rotate(-45deg);
+	transition: transform .3s;
+  }
+  .nav-wrapper{
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;/*キービジュアルと.btn_triggerとの重なりの前後関係を調整*/
+   }
+   .header-nav{
+	  width: 100%;
+	  height: 100%;
+	  background-color:#1B1310;
+	  z-index: 2;
+	}
+   .header-nav .nav-list{
+	  display: block;
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%,-50%);
+	  text-align: center;
+	}
+	.header-nav .nav-item{
+	  margin-right: 0;
+	  margin-bottom: 40px;
+	}
+
+/* ------------------ */
+/* fv */
+/* ------------------ */
+.main-copy{
+	font-size: 3rem;
+}
+
+/* ------------------ */
+/* service */
+/* ------------------ */
+ .content-inner{
+  flex-direction:column;
+	margin:50px auto;
+}
+.img-wrapper_service{
+	margin-top: 40px;
+}
+.img-wrapper_service img{
+  height:150px;
+  object-fit:cover;
+}
+
+/* ------------------ */
+/* news */
+/* ------------------ */
+.card-list{
+	flex-direction: column;
+}
+.card-item{
+	margin: 50px 0 0;
+}
+}
+.card-list li:first-child{
+	margin-top: 0;
+}
